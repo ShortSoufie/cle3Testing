@@ -3,6 +3,7 @@ window.addEventListener('load', init)
 document.addEventListener("DOMContentLoaded", function() {
     const video = document.getElementById("video");
     const scanButton = document.getElementById("scanButton");
+    const messageElement = document.getElementById("message");
 
     scanButton.addEventListener("click", function() {
         Quagga.init({
@@ -16,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }, function(err) {
             if (err) {
-                console.error(err);
-                alert("Error initializing Quagga: " + err);
+                console.error("Error initializing Quagga:", err);
+                displayMessage("Error initializing Quagga: " + err);
                 return;
             }
             Quagga.start();
@@ -28,7 +29,13 @@ document.addEventListener("DOMContentLoaded", function() {
             Quagga.stop();
         });
     });
+
+    function displayMessage(msg) {
+        messageElement.textContent = msg; // Display message on screen
+        messageElement.style.display = "block"; // Show message element
+    }
 });
+
 
 
 
