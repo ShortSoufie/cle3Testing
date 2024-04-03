@@ -1,26 +1,3 @@
-<?php
-/** @var mysqli $db */
-
-// Setup connection with database
-require_once 'includes/database.php';
-
-// Select all the albums from the databasex1
-$query = "SELECT * FROM kunstwerken";
-
-// Store the albums in an array
-$result = mysqli_query($db, $query)
-or die('Error ' . mysqli_error($db) . ' with query ' . $query);
-$bezoekingen = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $bezoekingen[] = $row;
-}
-
-// Close the connection
-mysqli_close($db);
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
